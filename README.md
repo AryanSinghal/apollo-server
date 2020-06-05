@@ -33,21 +33,31 @@ Client applications can query the schema within its capabilities. This approach 
 import { makeExecutableSchema } from 'graphql-tools';
 
 const jsSchema = makeExecutableSchema({
-   typeDefs, 
+
+   typeDefs,
         // It represents a GraphQL query
+
    resolvers, 
         // This has functions that handle the query 
+
    logger, 
-        // It print errors to the server console 
+        // It print errors to the server console
+
    allowUndefinedInResolve = false,
         /* This is true by default. When set to false, causes your resolve functions to throw errors if they return undefined. */
+
    resolverValidationOptions = {}, // optional
+
    directiveResolvers = null, // optional
+
    schemaDirectives = null,  // optional
+
    parseOptions = {}, 
         // allows customization of parse when specifying typeDefs as a string
+
    inheritResolversFromInterfaces = false
         // accepts a Boolean argument to check resolvers object inheritance.
+
 });	
 
 Except typeDefs all fields are optional
@@ -55,14 +65,21 @@ Except typeDefs all fields are optional
 ### Example
 
 1. type Book {
+
     title: String
+
     author: [Author]!
+
     }
 
 2. type BookStore{
+
     id: ID!
+
     title: String!
+
     addBook(title: String, author: String): Book
+    
     }
 
 ! means that the field is non-nullable
