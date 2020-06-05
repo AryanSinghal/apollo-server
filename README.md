@@ -67,4 +67,28 @@ Except typeDefs all fields are optional
 
 ! means that the field is non-nullable
 
-## 
+### GraphQL Resolvers
+
+Resolver is a collection of functions that generate response for a GraphQL query. In simple terms, a resolver acts as a GraphQL query handler. 
+
+Every resolver function in a GraphQL schema accepts four positional arguments as given below −
+- root (The object that contains the result returned from the resolver on the parent field)
+- args (An object with the arguments passed into the field in the query)
+- context (This is an object shared by all resolvers in a particular query)
+- info (It contains information about the execution state of the query, including the field name, path to the field from the root)
+
+The resolver can return null, undefined, array, promise (in most cases), scalar or object.
+
+#### Syntax
+
+fieldName:(root, args, context, info) => { result }
+
+#### Example
+
+1. greeting:() => {
+    return "hello GraphQL!!!"
+    }
+
+2. studentById:(root, args, context, info) => {
+    return db.students.get(args.id);
+    }
