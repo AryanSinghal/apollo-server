@@ -79,7 +79,7 @@ Except typeDefs all fields are optional
     title: String!
 
     addBook(title: String, author: String): Book
-    
+
     }
 
 ! means that the field is non-nullable
@@ -103,9 +103,13 @@ fieldName:(root, args, context, info) => { result }
 #### Example
 
 1. greeting:() => {
-    return "hello GraphQL!!!"
+
+    return "hello GraphQL!!!";
+    
     }
 
 2. studentById:(root, args, context, info) => {
+
     return db.students.get(args.id);
+
     }
