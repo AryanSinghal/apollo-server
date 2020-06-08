@@ -1,0 +1,50 @@
+{
+  "name": "apollo-server",
+  "version": "1.0.0",
+  "description": "GraphQL is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data. Basically, GraphQL is a query language designed to build client application by providing an intuitive and flexible syntax for describing their data requirement. It was developed internally by Facebook in 2012. It was publicly released in 2015. It provides an approach to develop web APIs and has been compared and contrasted with REST and other web service architectures.",
+  "main": "index.js",
+  "nodemonConfig": {
+    "execMap": {
+      "js": "babel-node ./src"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "npx nodemon",
+    "start": "npm run nodemon",
+    "lint": "eslint ./src",
+    "lint:fix": "npm run lint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AryanSinghalGit/apollo-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AryanSinghalGit/apollo-server/issues"
+  },
+  "homepage": "https://github.com/AryanSinghalGit/apollo-server#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.21.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.14.2",
+    "babel-eslint": "^10.1.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "4.17.1",
+    "graphql": "^15.1.0",
+    "merge-graphql-schemas": "^1.7.8"
+  }
+}
