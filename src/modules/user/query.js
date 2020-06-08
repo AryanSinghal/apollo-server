@@ -3,7 +3,7 @@ const query = {
     return ({
       id: '51',
       name: 'Aryan Singhal',
-      // email: 'aryan.singhal@successive.tech'
+      email: 'aryan.singhal@successive.tech'
     });
   }
 };
