@@ -28,7 +28,7 @@ A GraphQL schema is at the core of any GraphQL server implementation. It describ
 
 Client applications can query the schema within its capabilities. This approach decouples clients from servers and allows both to evolve and scale independently. The makeExecutableSchema function in graphql-tools helps you to bind schema and resolvers.
 
-#### Syntax
+#### Syntax of schema
 
 import { makeExecutableSchema } from 'graphql-tools';
 
@@ -62,7 +62,7 @@ const jsSchema = makeExecutableSchema({
 
 Except typeDefs all fields are optional
 
-### Example
+### Example of typeDefs
 
 1. type Book {
 
@@ -96,11 +96,11 @@ Every resolver function in a GraphQL schema accepts four positional arguments as
 
 The resolver can return null, undefined, array, promise (in most cases), scalar or object.
 
-#### Syntax
+#### Resolver function signature
 
 fieldName:(root, args, context, info) => { result }
 
-#### Example
+#### Resolver function Example
 
 1. greeting:() => {
 
@@ -113,3 +113,4 @@ fieldName:(root, args, context, info) => { result }
     return db.students.get(args.id);
 
     }
+    
