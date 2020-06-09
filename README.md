@@ -13,11 +13,11 @@ It allows clients to define the structure of the data required, and the same str
 
 - One of the most common problems with REST is that of over- and underfetching. This happens because the only way for a client to download data is by hitting endpoints that return fixed data structures. It’s very difficult to design the API in a way that it’s able to provide clients with their exact data needs. Whereas GraphQL overcomes this problem.
 
-- GraphQL provides a central location, where all available data is described. The GraphQL schema is usually defined on server-side, but clients can read (query) and write (mutation) data based on the schema. 
+- GraphQL provides a central location, where all available data is described. The GraphQL schema is usually defined on server-side, but clients can read (query) and write (mutation) data based on the schema.
 
 - Sometimes GraphQL operation are expensive as compared to rest API.
 
-- Implementing a simplified cache with GraphQL is more complex than implementing it in REST. In REST, resources are accessed with URLs, so you can cache on a resource level because you have the resource URL as identifier. 
+- Implementing a simplified cache with GraphQL is more complex than implementing it in REST. In REST, resources are accessed with URLs, so you can cache on a resource level because you have the resource URL as identifier.
 
 
 ## GraphQL Schema and Resolvers.
@@ -37,10 +37,10 @@ const jsSchema = makeExecutableSchema({
    typeDefs,
         // It represents a GraphQL query
 
-   resolvers, 
-        // This has functions that handle the query 
+   resolvers,
+        // This has functions that handle the query
 
-   logger, 
+   logger,
         // It print errors to the server console
 
    allowUndefinedInResolve = false,
@@ -52,13 +52,13 @@ const jsSchema = makeExecutableSchema({
 
    schemaDirectives = null,  // optional
 
-   parseOptions = {}, 
+   parseOptions = {},
         // allows customization of parse when specifying typeDefs as a string
 
    inheritResolversFromInterfaces = false
         // accepts a Boolean argument to check resolvers object inheritance.
 
-});	
+});
 
 Except typeDefs all fields are optional
 
@@ -86,7 +86,7 @@ Except typeDefs all fields are optional
 
 ### GraphQL Resolvers
 
-Resolver is a collection of functions that generate response for a GraphQL query. In simple terms, a resolver acts as a GraphQL query handler. 
+Resolver is a collection of functions that generate response for a GraphQL query. In simple terms, a resolver acts as a GraphQL query handler.
 
 Every resolver function in a GraphQL schema accepts four positional arguments as given below −
 - root (The object that contains the result returned from the resolver on the parent field)
@@ -105,7 +105,7 @@ fieldName:(root, args, context, info) => { result }
 1. greeting:() => {
 
     return "hello GraphQL!!!";
-    
+
     }
 
 2. studentById:(root, args, context, info) => {
@@ -113,4 +113,3 @@ fieldName:(root, args, context, info) => { result }
     return db.students.get(args.id);
 
     }
-    
