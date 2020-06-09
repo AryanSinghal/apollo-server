@@ -13,7 +13,7 @@ class User {
   getAllUsers = () => {
     let users = [];
     for (let value of this.users.values()) {
-      users = [...users, value]
+      users.push(value);
     }
     return users;
   }
