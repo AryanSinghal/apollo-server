@@ -9,7 +9,8 @@ const typeDefs = mergeTypes(typesArray, { all: true });
 export default {
   resolvers: {
     Query: { ...query, ...trainee.query },
-    Mutation: {...trainee.mutation}
+    Mutation: { ...trainee.mutation },
+    Subscription: { ...trainee.subscription },
   },
   typeDefs
 };
