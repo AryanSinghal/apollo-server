@@ -3,3 +3,6 @@ export const subscriptions = {
   TRAINEE_UPDATED: 'TRAINEE_UPDATED',
   TRAINEE_DELETED: 'TRAINEE_DELETED',
 }
+
+export const loginApi = 'login';
+export const meApi = 'me';

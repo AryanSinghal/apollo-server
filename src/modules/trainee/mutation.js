@@ -21,6 +21,6 @@ const mutation = {
     pubsub.publish(subscriptions.TRAINEE_DELETED, { traineeDeleted: deletedUserId });
     return deletedUserId;
   },
-}
+};
 
 export default mutation;
