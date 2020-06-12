@@ -10,7 +10,7 @@ const mutation = {
     return createdUser;
   },
   updateTrainee: (root, args) => {
-    const { id, ...rest } = args;
+    const { user: { id, ...rest } } = args;
     const updatedUser = userInstance.updateUser(id, rest);
     pubsub.publish(subscriptions.TRAINEE_UPDATED, { traineeUpdated: updatedUser });
     return updatedUser;
