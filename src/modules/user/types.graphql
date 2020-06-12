@@ -1,6 +1,10 @@
-type User{
-  id: ID!
+type User {
   name: String!
   email: String!
   role: String!
+}
+
+type AllUser {
+  count: Int!
+  records: [User]
 }
