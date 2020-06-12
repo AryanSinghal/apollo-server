@@ -18,7 +18,7 @@ const mutation = {
   },
   updateTrainee: async (root, args, context) => {
     try {
-      const { id, ...rest } = args;
+      const { user: { id, ...rest } } = args;
       const { dataSources: { traineeAPI } } = context;
       const { data } = await traineeAPI.updateTrainee({ id, rest });
       pubsub.publish(subscriptions.TRAINEE_UPDATED, { traineeUpdated: data.id });
