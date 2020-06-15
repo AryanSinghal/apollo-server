@@ -48,7 +48,7 @@ class Server {
         traineeAPI: new TraineeAPI(),
       }),
       context: ({ req }) => {
-        const token = req.headers.authorization || '';
+        const token = (req) ? req.headers.authorization : '';
         return { token };
       }
     });

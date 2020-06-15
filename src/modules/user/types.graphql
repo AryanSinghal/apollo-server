@@ -4,6 +4,14 @@ type User {
   role: String!
 }
 
+type UpdatedUser {
+  id: ID!
+  name: String
+  email: String
+  role: String
+  password: String
+}
+
 type AllUser {
   count: Int!
   records: [User]

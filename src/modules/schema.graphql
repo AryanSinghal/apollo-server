@@ -13,6 +13,6 @@ type Mutation {
 
 type Subscription {
   traineeCreated: User!
-  traineeUpdated: User!
+  traineeUpdated: UpdatedUser!
   traineeDeleted: ID!
 }
