@@ -1,17 +1,25 @@
+import pubsub from '../pubsub';
 import { userInstance } from '../../service/index';
+import { subscriptions } from '../../lib/constant';
 
 const mutation = {
   createTrainee: (root, args) => {
     const { user } = args;
-    return userInstance.createUser(user);
+    const createdUser = userInstance.createUser(user);
+    pubsub.publish(subscriptions.TRAINEE_CREATED, { traineeCreated: createdUser });
+    return createdUser;
   },
   updateTrainee: (root, args) => {
-    const { id, ...rest } = args;
-    return userInstance.updateUser(id, rest);
+    const { user: { id, ...rest } } = args;
+    const updatedUser = userInstance.updateUser(id, rest);
+    pubsub.publish(subscriptions.TRAINEE_UPDATED, { traineeUpdated: updatedUser });
+    return updatedUser;
   },
   deleteTrainee: (root, args) => {
     const { id } = args;
-    return userInstance.deleteUser(id);
+    const deletedUserId = userInstance.deleteUser(id);
+    pubsub.publish(subscriptions.TRAINEE_DELETED, { traineeDeleted: deletedUserId });
+    return deletedUserId;
   },
 }
 

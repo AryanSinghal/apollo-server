@@ -4,7 +4,13 @@ type Query {
 }
 
 type Mutation {
-  createTrainee(user: UserInput!): User!
-  updateTrainee(id: ID!, role: String, name: String, email: String): User!
+  createTrainee(user: CreateUserInput!): User!
+  updateTrainee(user: UpdateUserInput!): User!
   deleteTrainee(id: ID!): ID!
+}
+
+type Subscription {
+  traineeCreated: User!
+  traineeUpdated: User!
+  traineeDeleted: ID!
 }

@@ -1,5 +1,5 @@
 {
-  "name": "apollo-server",
+  "name": "apollo",
   "version": "1.0.0",
   "description": "GraphQL is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data. Basically, GraphQL is a query language designed to build client application by providing an intuitive and flexible syntax for describing their data requirement. It was developed internally by Facebook in 2012. It was publicly released in 2015. It provides an approach to develop web APIs and has been compared and contrasted with REST and other web service architectures.",
   "main": "index.js",
@@ -33,6 +33,7 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "apollo-server": "^2.14.3",
     "apollo-server-express": "^2.14.2",
     "babel-eslint": "^10.1.0",
     "body-parser": "^1.19.0",

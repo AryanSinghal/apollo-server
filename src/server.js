@@ -1,6 +1,7 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import * as bodyParser from 'body-parser';
+import { createServer } from 'http';
 import cors from 'cors';
 import schema from './modules';
 
@@ -17,8 +18,8 @@ class Server {
   }
 
   run = () => {
-    const { app, config: { port } } = this;
-    app.listen(port, (err) => {
+    const { httpServer, config: { port } } = this;
+    httpServer.listen(port, (err) => {
       if (err) {
         console.log(err);
       }
@@ -41,6 +42,8 @@ class Server {
     const { app } = this;
     this.server = new ApolloServer(schema);
     this.server.applyMiddleware({ app });
+    this.httpServer = createServer(app);
+    this.server.installSubscriptionHandlers(this.httpServer);
     this.run();
   }
 }
