@@ -10,7 +10,7 @@ const subscription = {
   },
   traineeDeleted: {
     subscribe: () => pubsub.asyncIterator([subscriptions.TRAINEE_DELETED]),
-  }
-}
+  },
+};
 
 export default subscription;

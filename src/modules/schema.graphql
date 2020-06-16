@@ -1,12 +1,14 @@
 type Query {
   getMyProfile: User!
   getAllTrainees: [User]
+  getMe: User!
 }
 
 type Mutation {
   createTrainee(user: CreateUserInput!): User!
   updateTrainee(user: UpdateUserInput!): User!
   deleteTrainee(id: ID!): ID!
+  loginUser(email: String!, password: String!): String!
 }
 
 type Subscription {

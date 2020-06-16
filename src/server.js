@@ -4,6 +4,7 @@ import * as bodyParser from 'body-parser';
 import { createServer } from 'http';
 import cors from 'cors';
 import schema from './modules';
+import { UserAPI } from './datasource';
 
 class Server {
   constructor(config) {
@@ -40,7 +41,12 @@ class Server {
 
   setupApollo = () => {
     const { app } = this;
-    this.server = new ApolloServer(schema);
+    this.server = new ApolloServer({
+      ...schema,
+      dataSources: () => ({
+        userAPI: new UserAPI(),
+      }),
+    });
     this.server.applyMiddleware({ app });
     this.httpServer = createServer(app);
     this.server.installSubscriptionHandlers(this.httpServer);
