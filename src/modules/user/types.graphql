@@ -2,7 +2,14 @@ type User {
   name: String!
   email: String!
   role: String!
-  createdAt: String
+}
+
+type GetUser {
+  name: String!
+  email: String!
+  role: String!
+  createdAt: String!
+  originalId: ID!
 }
 
 type UpdatedUser {
@@ -15,5 +22,5 @@ type UpdatedUser {
 
 type AllUser {
   count: Int!
-  records: [User]
+  records: [GetUser]
 }
