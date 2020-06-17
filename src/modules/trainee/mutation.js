@@ -22,7 +22,7 @@ const mutation = {
       const { dataSources: { traineeAPI } } = context;
       const { data } = await traineeAPI.updateTrainee({ id, rest });
       pubsub.publish(subscriptions.TRAINEE_UPDATED, { traineeUpdated: { id: data.id, ...rest } });
-      return data.id;
+      return { id: data.id, ...rest };
     }
     catch (err) {
       const { message, status } = err.extensions.response.body;
