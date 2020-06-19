@@ -4,7 +4,7 @@ import * as bodyParser from 'body-parser';
 import { createServer } from 'http';
 import cors from 'cors';
 import schema from './modules';
-import { UserAPI } from './datasource';
+import { UserAPI, TraineeAPI } from './datasource';
 
 class Server {
   constructor(config) {
@@ -45,7 +45,12 @@ class Server {
       ...schema,
       dataSources: () => ({
         userAPI: new UserAPI(),
+        traineeAPI: new TraineeAPI(),
       }),
+      context: ({ req }) => {
+        const token = (req) ? req.headers.authorization : '';
+        return { token };
+      }
     });
     this.server.applyMiddleware({ app });
     this.httpServer = createServer(app);

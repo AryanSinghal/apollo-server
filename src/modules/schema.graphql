@@ -1,18 +1,18 @@
 type Query {
   getMyProfile: User!
-  getAllTrainees: [User]
+  getAllTrainees(skip: Int, limit: Int): AllUser
   getMe: User!
 }
 
 type Mutation {
   createTrainee(user: CreateUserInput!): User!
-  updateTrainee(user: UpdateUserInput!): User!
+  updateTrainee(user: UpdateUserInput!): UpdatedUser!
   deleteTrainee(id: ID!): ID!
   loginUser(email: String!, password: String!): String!
 }
 
 type Subscription {
   traineeCreated: User!
-  traineeUpdated: User!
+  traineeUpdated: UpdatedUser!
   traineeDeleted: ID!
 }

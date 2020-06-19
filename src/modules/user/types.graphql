@@ -1,6 +1,27 @@
-type User{
-  id: ID!
+type User {
   name: String!
   email: String!
   role: String!
+  createdAt: String
+}
+
+type GetUser {
+  name: String!
+  email: String!
+  role: String!
+  createdAt: String!
+  originalId: ID!
+}
+
+type UpdatedUser {
+  id: ID!
+  name: String
+  email: String
+  role: String
+  password: String
+}
+
+type AllUser {
+  count: Int!
+  records: [GetUser]
 }

@@ -1,25 +1,40 @@
 import pubsub from '../pubsub';
-import { userInstance } from '../../service/index';
 import { subscriptions } from '../../lib/constant';
+import { ApolloError } from 'apollo-server';
 
 const mutation = {
-  createTrainee: (root, args) => {
-    const { user } = args;
-    const createdUser = userInstance.createUser(user);
-    pubsub.publish(subscriptions.TRAINEE_CREATED, { traineeCreated: createdUser });
-    return createdUser;
+  createTrainee: async (root, args, context) => {
+    try {
+      const { user: { name, email, password } } = args;
+      const { dataSources: { traineeAPI } } = context;
+      const { data } = await traineeAPI.createTrainee({ name, email, password });
+      pubsub.publish(subscriptions.TRAINEE_CREATED, { traineeCreated: data });
+      return data;
+    }
+    catch (err) {
+      const { message, status } = err.extensions.response.body;
+      throw new ApolloError(message, status);
+    }
   },
-  updateTrainee: (root, args) => {
-    const { user: { id, ...rest } } = args;
-    const updatedUser = userInstance.updateUser(id, rest);
-    pubsub.publish(subscriptions.TRAINEE_UPDATED, { traineeUpdated: updatedUser });
-    return updatedUser;
+  updateTrainee: async (root, args, context) => {
+    try {
+      const { user: { id, ...rest } } = args;
+      const { dataSources: { traineeAPI } } = context;
+      const { data } = await traineeAPI.updateTrainee({ id, rest });
+      pubsub.publish(subscriptions.TRAINEE_UPDATED, { traineeUpdated: { id: data.id, ...rest } });
+      return { id: data.id, ...rest };
+    }
+    catch (err) {
+      const { message, status } = err.extensions.response.body;
+      throw new ApolloError(message, status);
+    }
   },
-  deleteTrainee: (root, args) => {
+  deleteTrainee: async (root, args, context) => {
     const { id } = args;
-    const deletedUserId = userInstance.deleteUser(id);
-    pubsub.publish(subscriptions.TRAINEE_DELETED, { traineeDeleted: deletedUserId });
-    return deletedUserId;
+    const { dataSources: { traineeAPI } } = context;
+    const { data } = await traineeAPI.deleteTrainee(id);
+    pubsub.publish(subscriptions.TRAINEE_DELETED, { traineeDeleted: data.id });
+    return data.id;
   },
 };
 
